@@ -20,3 +20,7 @@
 
 - nmap  
 `nmap -sS -p- 192.168.x.x`
+
+- scp   
+`scp usuario@direccion_ip:/ruta/al/archivo /ruta/de/destino`    
+`scp C:\Users\TuUsuario\archivo.txt usuario@192.168.1.2:/home/usuario/`
