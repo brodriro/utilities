@@ -15,3 +15,23 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## install Warp terminal
 brew install --cask warp
+
+
+## install docker
+#brew install docker
+
+## install nodejs
+#brew install node
+
+## install yarn
+#npm install --global yarn
+
+## install visual studio code
+brew install --cask visual-studio-code
+
+
+## instal nmap
+brew install nmap
+
+## install netcat
+brew install netcat
