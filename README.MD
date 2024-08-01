@@ -35,13 +35,13 @@
 
     ```
     config:
-    target: "https://example.com"
-    phases:
+      target: "https://example.com"
+      phases:
         - duration: 60
-        arrivalRate: 10
+          arrivalRate: 10
 
     scenarios:
-    - flow:
+      - flow:
         - get:
             url: "/"
     ```
