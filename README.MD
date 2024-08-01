@@ -47,3 +47,17 @@
     ```
 
     Ejecutar `artillery run test.yml`
+
+- Instalar paquetes `.deb`  
+`sudo dpkg -i [path-file.deb]`
+
+### Instalar Linux en windows con WSL
+
+- Abrir WSL como administrador
+- Mostar distribuciones disponibles `wsl --list --online`
+- Instalar distro `wsl --install -d kali-linux`
+- Setear usuario y contraseña
+- Actulizar dependencias `sudo apt update`
+- Instalar interfaz gráfica `sudo apt install -y kali-win-kex`
+- Lanzar la interfaz grafica `kali-win-kex`
+
