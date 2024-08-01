@@ -27,3 +27,23 @@
 
 - rlwrap - reverse shell    
 `rlwrap -cAr nc -nlvp 443`
+
+- Test de rendimiento web   
+`npm install -g artillery`
+    
+    crear archivo `test.yml`
+
+    ```
+    config:
+    target: "https://example.com"
+    phases:
+        - duration: 60
+        arrivalRate: 10
+
+    scenarios:
+    - flow:
+        - get:
+            url: "/"
+    ```
+
+    Ejecutar `artillery run test.yml`
