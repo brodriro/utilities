@@ -18,6 +18,9 @@
 - grep  
 `grep [word] [./directory] -n -r -i --color -I`
 
+- find  
+`find /home/Desktop -iname [word]`
+
 - nmap  
 `nmap -sS -p- 192.168.x.x`
 
@@ -61,3 +64,20 @@
 - Instalar interfaz gráfica `sudo apt install -y kali-win-kex`
 - Lanzar la interfaz grafica `kali-win-kex`
 
+
+### Habilitar permisos de usuario
+- Tabla de permisos
+```
+1   2   3   4   5   6   7
+x   w   wx  r   rx  rw  rwx
+```
+
+```
+r: read
+w: write
+x: execute
+```
+```
+chmod [user]|[group]|[all] index.html
+```
+- Ejecución `chmod 667 index.html`
