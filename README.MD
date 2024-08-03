@@ -81,3 +81,10 @@ x: execute
 chmod [user]|[group]|[all] index.html
 ```
 - Ejecución `chmod 667 index.html`
+
+
+### Metadatos de imagenes
+- Instalar `exiftool`   
+  `sudo apt install libimage-exiftool-perl -y`
+
+- Ejecutar `exiftool image.jpg`
