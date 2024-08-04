@@ -54,6 +54,9 @@
 - Instalar paquetes `.deb`  
 `sudo dpkg -i [path-file.deb]`
 
+- Info de IP o server web   
+`whois www.google.com` `whois 192.168.200.25`
+
 ### Instalar Linux en windows con WSL
 
 - Abrir WSL como administrador
@@ -88,3 +91,7 @@ chmod [user]|[group]|[all] index.html
   `sudo apt install libimage-exiftool-perl -y`
 
 - Ejecutar `exiftool image.jpg`
+
+### Obtener informacion publica de webs o IP
+- Instalar: `sudo apt install theharvester/kali-last-snapshot`
+- Usar: `theHarvester -d myweb.com -b [soruce1,source2] -l 100`
