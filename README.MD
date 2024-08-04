@@ -95,3 +95,13 @@ chmod [user]|[group]|[all] index.html
 ### Obtener informacion publica de webs o IP
 - Instalar: `sudo apt install theharvester/kali-last-snapshot`
 - Usar: `theHarvester -d myweb.com -b [soruce1,source2] -l 100`
+
+
+### Instalar recon-ng
+`sudo apt install recon-ng/kali-last-snapshot -y`
+
+- Instalar path `marketplace install recon/domains-contacts/whois_pocs`
+- Cargar módulo `modules load recon/domains-contacts/whois_pocs`
+
+- Setear source `options set SOURCE web.com`
+- Ejecutar comando `run`
