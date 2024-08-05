@@ -4,7 +4,9 @@
 ### Usage 
 `bash +x scripts/ipscan.sh [domain|ip]`     
 
-Download repo and exec: `bash +x scripts/ipscan.sh myweb.com` or via **curl**: `curl -s https://github.com/brodriro/utilities/blob/master/scripts/ipscan.sh | bash`
+Download repo and exec: `bash +x scripts/ipscan.sh myweb.com` or via **curl**: `curl -s https://raw.githubusercontent.com/brodriro/utilities/master/scripts/ipscan.sh | bash -s -- myweb.com`
+
+See script [ipscan.sh](/scripts/ipscan.sh)
 
 After exec, check **ipscan_result.txt** file
 
