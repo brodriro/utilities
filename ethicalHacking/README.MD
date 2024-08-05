@@ -31,3 +31,15 @@ After exec, check **ipscan_result.txt** file
     ```
     sudo apt install wireshark/kali-last-snapshot
     ```
+
+### Nmap
+- scan services
+    ```
+    sudo nmap -sV [domain] -p [port]
+    ```
+- export scan
+    ```
+    sudo nmap -v --reason -sV -ox services.xml --stylesheet="https://svn.nmap.org/nmap/docs/nmap.xsl" [domain]
+    chmod 777 services.xml
+    firefox services.xml
+    ```
