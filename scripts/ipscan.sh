@@ -10,7 +10,7 @@ echo "=========================================" | $writeToFile
 echo " " | $writeToFile
 
 echo "Scan ports for $domain" | $writeToFile
-#nmap -sS -p- $domain | $writeToFile
+nmap -sS -p- $domain | $writeToFile
 echo "=========================================" | $writeToFile
 echo " " | $writeToFile
 
