@@ -21,6 +21,12 @@ After exec, check **ipscan_result.txt** file
     ```
     sudo arp-scan -I [eth0] --localnet
     ```
+- Exec script
+    ```
+    curl -s https://raw.githubusercontent.com/brodriro/utilities/master/scripts/wifiAttack.sh >> wifiAttack.sh
+
+    sudo bash +x wifiAttack.sh
+    ```
 
 ### For mac
 - Install
