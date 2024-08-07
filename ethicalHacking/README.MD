@@ -32,6 +32,7 @@ After exec, check **ipscan_result.txt** file
     ```
     sudo bettercap -iface [eth0]
 
+    net.probe on
     set arp.spoof.targets [192.168.x.x, 192.168.x.x]
     arp.ban
     ```
@@ -40,7 +41,7 @@ After exec, check **ipscan_result.txt** file
     arp.ban off
     Ctrl +c 
     ```
-    
+
 ## Other commands
 - Info de IP/dominio    
 `https://centralops.net/`   
