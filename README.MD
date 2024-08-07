@@ -67,6 +67,19 @@
 - Instalar interfaz gráfica `sudo apt install -y kali-win-kex`
 - Lanzar la interfaz grafica `kali-win-kex`
 
+#### Habilitar Ip compartida
+- Crear archivo `.wslconfig` en la carpeta usuario con `cmd + R` y escribir `%UserProfle%` 
+``` 
+[wsl2]
+networkingMode=mirrored   
+```
+- Apagar y encender linux
+```
+wsl -l -v
+wsl -t kali-linux
+wsl -d kali-linux
+```
+
 
 ### Habilitar permisos de usuario
 - Tabla de permisos
