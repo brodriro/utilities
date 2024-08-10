@@ -13,9 +13,19 @@ brew install git
 ## install OhMyZsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+## install powerLevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+echo "Set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc "
+echo "Download fonts on https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#fonts"
+open https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#fonts
+echo "After install fonts, run p10k configure"
+
 ## install Warp terminal
 brew install --cask warp
 
+## install bat
+brew install bat
 
 ## install docker
 #brew install docker
