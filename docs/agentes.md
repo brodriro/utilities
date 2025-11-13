@@ -27,7 +27,7 @@ Se inicia con la pregunta fundamental: **¿qué es un agente?**
 Imagina un asistente de investigación que recibe un tema, busca artículos, resume resultados y genera conclusiones, todo sin intervención humana directa.
 
 📸 **Imagen sugerida:**  
-![Arquitectura de un agente LLM](https://cobusgreyling.medium.com/how-would-the-architecture-for-an-llm-agent-platform-look-b07d7e004561)
+![Arquitectura de un agente LLM](https://miro.medium.com/v2/resize%3Afit%3A2000/1%2APhqVAVg77D3K4XCtfkXN0w.png)
 
 ---
 
@@ -38,23 +38,26 @@ Esta clase presenta **cinco patrones esenciales** para diseñar flujos de trabaj
 ### 1️⃣ Encadenamiento de Prompts  
 Procesa entradas **secuencialmente a través de múltiples LLMs**, dividiendo un problema grande en partes más manejables.  
 💡 *Ejemplo:* Un sistema que analiza una noticia → genera resumen → produce título.
+![Gráfico](https://www.ibm.com/content/dam/connectedassets-adobe-cms/worldwide-content/creative-assets/s-migr/ul/g/2b/2d/prompt-chaining-langchain.component.nocrop-xl.ts%3D1752515283261.png/content/adobe-cms/us/en/think/tutorials/prompt-chaining-langchain/jcr%3Acontent/root/table_of_contents/body-article-8/image)
 
 ### 2️⃣ Enrutamiento  
 Un LLM actúa como **enrutador**, decidiendo qué modelo especializado resolverá una tarea.  
 🎯 *Ejemplo:* GPT-4 para razonamiento lógico, Gemini para búsqueda rápida.
+![Gráfico](https://www.shutterstock.com/image-vector/ai-routing-workflow-shows-input-600w-2623383451.jpg)
 
 ### 3️⃣ Paralelización  
 Divide una tarea en subtareas **que se ejecutan en simultáneo**, luego combina los resultados.  
 🧵 *Ejemplo:* Evaluar opiniones de usuarios en paralelo antes de generar conclusiones.
+![Gráfico](https://media.istockphoto.com/id/2213687646/es/vector/el-flujo-de-trabajo-de-paralelizaci%C3%B3n-de-ia-muestra-la-entrada-de-datos-m%C3%BAltiples-llamadas.webp?b=1&s=612x612&w=0&k=20&c=A2J-CPQbx7u9_K-5oyPbIYnaluxcBHVm-ypwm5eRqLo=)
 
 ### 4️⃣ Orquestador-Trabajador  
 Un **LLM orquestador** distribuye tareas entre varios “trabajadores”, coordinando sus resultados.
+![Gráfico](https://bootcamptoprod.com/wp-content/uploads/2025/06/Orchestrator-Workers-Workflow-Pattern-Flow.jpg)
 
 ### 5️⃣ Evaluador-Optimizador  
 Un LLM **genera** una respuesta y otro **la evalúa**, ajustando el resultado en un ciclo de retroalimentación.
+![Gráfico](https://thumbs.dreamstime.com/b/el-flujo-de-trabajo-optimizador-evaluador-ia-muestra-proceso-con-iconos-para-del-y-salida-generador-entrada-diagrama-esquema-379289567.jpg)
 
-📸 **Imagen sugerida:**  
-![Patrones de flujo de trabajo LLM](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*HyGzQv3Y9dO1e6z5XW7MPQ.png)
 
 ---
 
