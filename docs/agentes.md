@@ -1,159 +1,186 @@
-
 # 🧠 Construcción de Agentes Efectivos y Patrones de Diseño con LLMs
 
 > Curso práctico sobre agentes inteligentes, flujos de trabajo y orquestación de modelos de lenguaje a gran escala (LLMs).  
-> Fecha de generación: 2025-11-12
 
 ---
 
-## 🚀 CONSTRUCCIÓN DE AGENTES EFECTIVOS: AUTONOMÍA DE LLMS Y EXPLICACIÓN
-
-En esta segunda jornada del curso, se explora la teoría detrás de los **agentes de inteligencia artificial (IA)** y su arquitectura.  
-Se inicia con la pregunta fundamental: **¿qué es un agente?**  
-
-🧩 Se menciona que el término *"IA agéntica"* ha sido sobreutilizado, y se ofrece una definición clara del proyecto **Agentes Pequeños de Hugging Face**, que define a los agentes de IA como:
-
-> “Programas en los que las salidas de un modelo de lenguaje (LLM) controlan el flujo de trabajo.”
-
-### 🔑 Cinco características clave que definen a un agente de IA
-
-1. Soluciones que involucran **múltiples llamadas al LLM**.  
-2. LLM capaces de **utilizar herramientas externas**.  
-3. **Entornos configurados** que permiten la comunicación entre diferentes LLM.  
-4. **Planificadores** que coordinan actividades.  
-5. **Autonomía de trabajo**, donde el LLM opera sin intervención humana.
-
-🧠 **Ejemplo práctico:**  
-Imagina un asistente de investigación que recibe un tema, busca artículos, resume resultados y genera conclusiones, todo sin intervención humana directa.
-
-📸 **Imagen sugerida:**  
-![Arquitectura de un agente LLM](https://miro.medium.com/v2/resize%3Afit%3A2000/1%2APhqVAVg77D3K4XCtfkXN0w.png)
+Resumen rápido
+- Un agente IA (agentic AI) es un programa en el que las salidas de un LLM controlan el flujo de trabajo: toma decisiones, usa herramientas y planifica acciones.
+- Dos familias de diseño: flujos de trabajo (workflows) —ruta fija y predecible— y sistemas agénticos —dinámicos, abiertos y adaptativos—.
+- Patrones clave: prompt chaining, routing, parallelization, orchestrator-worker, evaluator-optimizer.
+- Usa recursos (contexto/memoria) y herramientas (APIs/acciones) para que el agente actúe.
+- Monitorización y guardarraíles son imprescindibles.
 
 ---
 
-## 🧩 PATRONES ESENCIALES DE DISEÑO DE FLUJOS DE TRABAJO PARA LLMS
+## 1. ¿Qué es un agente IA?
+Definición práctica: programas donde las salidas de un LLM controlan el flujo de trabajo y la interacción con herramientas externas.
 
-Esta clase presenta **cinco patrones esenciales** para diseñar flujos de trabajo efectivos en proyectos con modelos de lenguaje.
+Cinco características clave:
+1. Múltiples llamadas al LLM (iteración / razonamiento paso a paso).  
+2. Capacidad de usar herramientas (APIs, DBs, ejecutores).  
+3. Entornos que coordinen varios LLM.  
+4. Planificadores que crean y ajustan subtareas.  
+5. Autonomía operativa (mínima intervención humana).
 
-### 1️⃣ Encadenamiento de Prompts  
-Procesa entradas **secuencialmente a través de múltiples LLMs**, dividiendo un problema grande en partes más manejables.  
-💡 *Ejemplo:* Un sistema que analiza una noticia → genera resumen → produce título.
-![Gráfico](https://www.ibm.com/content/dam/connectedassets-adobe-cms/worldwide-content/creative-assets/s-migr/ul/g/2b/2d/prompt-chaining-langchain.component.nocrop-xl.ts%3D1752515283261.png/content/adobe-cms/us/en/think/tutorials/prompt-chaining-langchain/jcr%3Acontent/root/table_of_contents/body-article-8/image)
-
-### 2️⃣ Enrutamiento  
-Un LLM actúa como **enrutador**, decidiendo qué modelo especializado resolverá una tarea.  
-🎯 *Ejemplo:* GPT-4 para razonamiento lógico, Gemini para búsqueda rápida.
-![Gráfico](https://www.shutterstock.com/image-vector/ai-routing-workflow-shows-input-600w-2623383451.jpg)
-
-### 3️⃣ Paralelización  
-Divide una tarea en subtareas **que se ejecutan en simultáneo**, luego combina los resultados.  
-🧵 *Ejemplo:* Evaluar opiniones de usuarios en paralelo antes de generar conclusiones.
-![Gráfico](https://media.istockphoto.com/id/2213687646/es/vector/el-flujo-de-trabajo-de-paralelizaci%C3%B3n-de-ia-muestra-la-entrada-de-datos-m%C3%BAltiples-llamadas.webp?b=1&s=612x612&w=0&k=20&c=A2J-CPQbx7u9_K-5oyPbIYnaluxcBHVm-ypwm5eRqLo=)
-
-### 4️⃣ Orquestador-Trabajador  
-Un **LLM orquestador** distribuye tareas entre varios “trabajadores”, coordinando sus resultados.
-![Gráfico](https://bootcamptoprod.com/wp-content/uploads/2025/06/Orchestrator-Workers-Workflow-Pattern-Flow.jpg)
-
-### 5️⃣ Evaluador-Optimizador  
-Un LLM **genera** una respuesta y otro **la evalúa**, ajustando el resultado en un ciclo de retroalimentación.
-![Gráfico](https://thumbs.dreamstime.com/b/el-flujo-de-trabajo-optimizador-evaluador-ia-muestra-proceso-con-iconos-para-del-y-salida-generador-entrada-diagrama-esquema-379289567.jpg)
-
+Ejemplo breve: agente de reservas de viaje
+- Usuario: "Quiero un vuelo a Lima el 20 de diciembre, prefiero mañana".
+- Flujo: LLM analiza → usa buscador → consulta disponibilidad → reserva asiento → confirma.
+- Aquí hay múltiples llamadas, herramientas y autonomía.
 
 ---
 
-## 🔄 COMPRENDIENDO LOS PATRONES DE AGENTES VS FLUJOS DE TRABAJO
+## 2. Patrones esenciales de diseño (qué son y cuándo usarlos)
 
-Se comparan los **patrones de diseño de agentes** con los **de flujo de trabajo**.
+### 1) Encadenamiento de prompts (Prompt Chaining)
+Propósito: descomponer problemas complejos en pasos secuenciales manejables.  
+Ejemplo: Generar un informe — LLM A crea índice → LLM B redacta secciones → LLM C revisa estilo.
 
-### 🤖 Sistemas basados en agentes
-- Más **abiertos y flexibles**.  
-- Permiten **retroalimentación continua**.  
-- Pueden adaptarse a cambios en tiempo real.
+Imagen (preview):
+![Prompt Chaining - ejemplo visual](https://miro.medium.com/v2/resize%3Afit%3A2000/1%2APhqVAVg77D3K4XCtfkXN0w.png)
 
-### ⚙️ Flujos de trabajo tradicionales
-- Siguen un **camino fijo y predecible**.  
-- Mayor control, menor flexibilidad.
+### 2) Enrutamiento (Routing)
+Propósito: un LLM decide qué modelo/componente especializado manejará una petición.  
+Ejemplo: Enrutador LLM clasifica consultas en "soporte técnico", "facturación", "ventas".
 
-⚠️ Los agentes presentan **riesgos** como imprevisibilidad de costos y calidad.  
-Por ello, se deben implementar **guardarraíles** y **monitorización constante** con SDKs como el de OpenAI.
+Imagen (preview):
+![Routing - diagrama de enrutamiento](https://www.shutterstock.com/image-vector/ai-routing-workflow-shows-input-600w-2623383451.jpg)
 
-📸 **Imagen sugerida:**  
-![Agente vs Workflow](https://miro.medium.com/v2/resize%3Afit%3A1400/0%2ATmrYdy5fYlzQn8DY.png)
-![Agente vs Workflow](https://cdn-uploads.huggingface.co/production/uploads/65a7901f3bb0e70b41c48805/2JbnTRtSaOz12onm-cyg9.png)
+### 3) Paralelización (Parallelization)
+Propósito: dividir trabajo en subtareas que corren simultáneamente para mejorar throughput.  
+Ejemplo: Análisis de sentimiento de 1.000 comentarios dividido en lotes.
 
----
+> Nota: usa este patrón cuando la tarea sea fácilmente *shardable* y la combinación de resultados sea sencilla.
 
-## 🌐 ORQUESTACIÓN DE MÚLTIPLES LLMS
+### 4) Orquestador–Trabajador (Orchestrator–Worker)
+Propósito: un LLM orquestador descompone y asigna tareas a varios "trabajadores" (LLMs o servicios).  
+Ejemplo: Orquestador define subtareas: investigar, escribir, validar; trabajadores ejecutan.
 
-Esta jornada se enfoca en **coordinar varios modelos de lenguaje** (GPT, Claude, Gemini, DeepSeek, etc.) mediante APIs.
+Imagen (preview):
+![Orchestrator - Worker](https://bootcamptoprod.com/wp-content/uploads/2025/06/Orchestrator-Workers-Workflow-Pattern-Flow.jpg)
 
-### 🔍 Modelos explorados
-- **GPT-4**: Alta capacidad de razonamiento.  
-- **Claude (Anthropic)**: Foco en interpretabilidad y seguridad.  
-- **Gemini (Google)**: Gran velocidad y contexto extenso.  
-- **DeepSeek (China)**: Código abierto y bajo costo.  
-- **Grok**: Inferencia rápida.  
-- **Oyama**: Plataforma para ejecutar modelos locales.
+### 5) Evaluador–Optimizador (Evaluator–Optimizer)
+Propósito: ciclo de generación y evaluación para mejorar exactitud y estilo.  
+Ejemplo: Generador produce texto → Evaluador revisa coherencia/factualidad → Optimizer reescribe.
 
-💡 *Ejemplo:* Crear un orquestador que use Claude para resumir, DeepSeek para buscar datos y GPT-4 para redactar.
+Imagen (preview):
+![Evaluator - Optimizer](https://thumbs.dreamstime.com/b/el-flujo-de-trabajo-optimizador-evaluador-ia-muestra-proceso-con-iconos-para-del-y-salida-generador-entrada-diagrama-esquema-379289567.jpg)
 
-📸 **Imagen sugerida:**  
-![Orquestación de múltiples LLMs](https://www.cursor-ide.com/blog/gpt-41-guide-2025/model-comparison.png)
-
----
-
-## ⚖️ COMPARANDO MARCOS DE AGENTES DE IA: SIMPLICIDAD VS POTENCIA
-
-Se analizan frameworks de IA desde los más simples hasta los más complejos:
-
-### 🔹 Simples
-- **OpenAI Agents SDK**: Ligero y flexible.  
-- **Cray**: Bajo código.
-
-### 🔸 Avanzados
-- **Landgraf** y **Autogen**: Ecosistemas potentes pero con curva de aprendizaje.
-
-💬 *Ejemplo:* OpenAI SDK permite conectar un LLM a herramientas sin infraestructura pesada, ideal para prototipos rápidos.
-
-📸 **Imagen sugerida:**  
-![AutoGen](https://lollypop.design/wp-content/uploads/2025/06/AutoGen-Popular-AI-Agent-Framework.webp)
-![OpnIA](https://humanloop.com/blog/openai-agents-sdk/image-2.png)
+¿Por qué usar patrones?
+- Modularidad, mantenibilidad, escalabilidad y facilidad para depurar.
 
 ---
 
-## 🧰 RECURSOS VS HERRAMIENTAS
+## 3. Patrones de agentes vs. patterns de workflow (comparativa)
+- Workflows:
+  - Camino fijo, predecible; ideal para tareas conocidas y repetitivas (ej. generar informe mensual).
+- Agentes:
+  - Camino no definido de antemano; auto-adaptativos; mejor para tareas abiertas e inciertas (ej. monitor de mercado que decide trades).
+- Riesgos de agentes: coste impredecible, variabilidad en calidad/latencia.  
+  Mitigación: guardarraíles, métricas, monitorización y límites de ejecución.
 
-Se distinguen dos formas de **ampliar las capacidades de un LLM**:
-
-### 📚 Recursos  
-Datos o contexto adicional para mejorar respuestas.  
-*Ejemplo:* Proporcionar a un LLM una base de datos de precios de boletos.
-
-### 🔧 Herramientas  
-Permiten al LLM **ejecutar acciones concretas**, como consultar APIs o enviar correos.
-
-💡 *Ejemplo práctico:*  
-Un LLM consulta el precio de un vuelo usando una API — él no ejecuta el código, **el sistema lo hace siguiendo sus instrucciones**.
-
-📸 **Imagen sugerida:**  
-![Recursos vs Herramientas](https://media2.dev.to/dynamic/image/width%3D1600%2Cheight%3D900%2Cfit%3Dcover%2Cgravity%3Dauto%2Cformat%3Dauto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhnl6wr76jwhasm229znw.jpeg)
+Imagen (preview) — comparación:
+![Agente vs Workflow 1](https://miro.medium.com/v2/resize%3Afit%3A1400/0%2ATmrYdy5fYlzQn8DY.png)
+![Agente vs Workflow 2](https://cdn-uploads.huggingface.co/production/uploads/65a7901f3bb0e70b41c48805/2JbnTRtSaOz12onm-cyg9.png)
 
 ---
 
-## 🧩 CONSTRUIR FLUJOS DE TRABAJO AGÉNTICOS CON LLM
+## 4. Orquestación de múltiples LLMs (cómo y por qué)
+Modelos y roles sugeridos:
+- GPT‑4: razonamiento complejo y verificación.  
+- Claude (Anthropic): revisión, seguridad y explicabilidad.  
+- Gemini: borradores rápidos / coste-efectivo en ciertos límites.  
+- DeepSeek: opciones de bajo coste y despliegue local.  
+- Grok: inferencias rápidas.  
+- Oyama: plataforma para ejecutar modelos locales.
 
-En esta sesión se profundiza en la **implementación práctica** de flujos agénticos.  
-Los estudiantes construyen un LLM personalizado con información profesional propia, integrando herramientas y recursos.
+Ejemplo de orquestación de contenido:
+1. Gemini genera primer borrador.  
+2. Claude Sonet revisa estilo y añade referencias.  
+3. GPT‑4 valida datos sensibles (ej. clínicos).
 
-✨ **Objetivos:**
-- Integrar datos personales o de contexto.  
-- Aplicar el patrón Evaluador-Optimizador.  
-- Preparar el proyecto final: un *alter ego digital*.
+Imagen (preview):
+![Comparativa de modelos](https://www.cursor-ide.com/blog/gpt-41-guide-2025/model-comparison.png)
 
+Consideraciones clave:
+- Coste vs rendimiento.  
+- Latencia y requisitos en tiempo real.  
+- Especialización por rol.  
+- Compatibilidad de APIs, límites legales y privacidad.  
+- Usar modelos locales si la regulación/datos lo requieren.  
+- Consultar leaderboards como Bellum AI para benchmarking.
 
 ---
 
-> 🧭 **Conclusión:**  
-> A lo largo de este curso, se construye una comprensión progresiva sobre la creación, coordinación y despliegue de agentes de IA basados en LLMs.  
-> Los participantes desarrollan las habilidades necesarias para diseñar sistemas autónomos, seguros y escalables. 🚀
+## 5. Recursos vs Herramientas (diferencia práctica)
+- Recursos: contexto, memorias, documentos (mejoran la calidad de respuestas).  
+- Herramientas: acciones ejecutables (consultar API, enviar email, ejecutar código).
 
+Flujo típico agente+herramienta:
+1. LLM decide acción.  
+2. Sistema ejecuta la herramienta.  
+3. Resultado vuelve al LLM.  
+4. LLM produce respuesta final.
+
+Ejemplo (chatbot de inventario):
+- Recurso: catálogo actualizado (RAG).  
+- Herramienta: `ConsultaInventario(productoID)`.  
+- Resultado: "Quedan 42 unidades".
+
+Imagen (preview):
+![Recursos vs Herramientas](https://lollypop.design/wp-content/uploads/2025/06/AutoGen-Popular-AI-Agent-Framework.webp)
+
+---
+
+## 6. Marcos (frameworks): simplicidad vs. potencia
+- Sin marco: llamadas directas a APIs (control total).  
+- Marcos ligeros: OpenAI Agents SDK (ligero), Cray (low-code).  
+- Marcos avanzados: Landgraf, Autogen (más potencia, curva de aprendizaje mayor).
+
+Imagen (preview OpenAI Agents SDK):
+![OpenAI Agents SDK](https://humanloop.com/blog/openai-agents-sdk/image-2.png)
+
+Recomendaciones:
+- Equipo pequeño / comienzo: API directo o marco ligero.  
+- Proyecto grande: considerar frameworks robustos.  
+- Entender el "código bajo el capó" del framework.
+
+---
+
+## 7. Diseño práctico y checklist para desarrolladores/integradores
+Antes de construir:
+- Define la meta del agente.  
+- Decide: workflow fijo o agente autónomo.  
+- Identifica herramientas y recursos.  
+- Selecciona modelos por rol.  
+- Prototipo: mínimo agente viable (MAV).
+
+Durante implementación:
+- Límites (timeouts, max pasos, token budgets).  
+- Monitorización: coste, latencia, tasa de errores, métricas de calidad.  
+- Logs estructurados y salidas estandarizadas (JSON).  
+- Evaluación automática y humana para casos críticos.
+
+Despliegue y operación:
+- Guardarraíles: validaciones de factualidad, filtros de seguridad.  
+- Fallbacks: rutas alternativas si falla un modelo/herramienta.  
+- Auditoría y trazabilidad: registrar acciones del agente.
+
+Consejos rápidos:
+- Documenta prompts, versiones de modelos y patrones.  
+- Itera con pruebas A/B para tradeoffs coste/precisión.
+
+---
+
+## 8. Mini-ejemplo práctico (resumido)
+Objetivo: Chatbot de inventario  
+- Recurso: BD de productos (RAG).  
+- Herramienta: `ConsultaInventario(productoID)`.  
+- Patrón: Orquestador–Trabajador + Evaluador–Optimizador.  
+- Flujo: Usuario → enrutador → ejecuta herramienta → LLM genera → evaluador comprueba → responde.
+
+---
+
+## 9. Conclusión y siguiente paso en el curso
+- Empieza con workflows, añade herramientas y luego autonomía controlada.  
+- Siguiente sesión: laboratorio práctico sobre integración de herramientas y orquestación multi-LLM; crearás un "alter ego digital".
