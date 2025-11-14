@@ -78,7 +78,8 @@ Se comparan los **patrones de diseño de agentes** con los **de flujo de trabajo
 Por ello, se deben implementar **guardarraíles** y **monitorización constante** con SDKs como el de OpenAI.
 
 📸 **Imagen sugerida:**  
-![Agente vs Workflow](https://miro.medium.com/v2/resize:fit:1200/format:webp/1*cIJQ8DoG19w9CV8Lz3y1iA.png)
+![Agente vs Workflow](https://miro.medium.com/v2/resize%3Afit%3A1400/0%2ATmrYdy5fYlzQn8DY.png)
+![Agente vs Workflow](https://cdn-uploads.huggingface.co/production/uploads/65a7901f3bb0e70b41c48805/2JbnTRtSaOz12onm-cyg9.png)
 
 ---
 
@@ -97,7 +98,7 @@ Esta jornada se enfoca en **coordinar varios modelos de lenguaje** (GPT, Claude,
 💡 *Ejemplo:* Crear un orquestador que use Claude para resumir, DeepSeek para buscar datos y GPT-4 para redactar.
 
 📸 **Imagen sugerida:**  
-![Orquestación de múltiples LLMs](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/multi-agent-architecture.png)
+![Orquestación de múltiples LLMs](https://www.cursor-ide.com/blog/gpt-41-guide-2025/model-comparison.png)
 
 ---
 
@@ -115,7 +116,8 @@ Se analizan frameworks de IA desde los más simples hasta los más complejos:
 💬 *Ejemplo:* OpenAI SDK permite conectar un LLM a herramientas sin infraestructura pesada, ideal para prototipos rápidos.
 
 📸 **Imagen sugerida:**  
-![Frameworks de agentes](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*NYX9Gz-QtKudOnTnD5CdIA.png)
+![AutoGen](https://lollypop.design/wp-content/uploads/2025/06/AutoGen-Popular-AI-Agent-Framework.webp)
+![OpnIA](https://humanloop.com/blog/openai-agents-sdk/image-2.png)
 
 ---
 
@@ -134,7 +136,7 @@ Permiten al LLM **ejecutar acciones concretas**, como consultar APIs o enviar co
 Un LLM consulta el precio de un vuelo usando una API — él no ejecuta el código, **el sistema lo hace siguiendo sus instrucciones**.
 
 📸 **Imagen sugerida:**  
-![Recursos vs Herramientas](https://miro.medium.com/v2/resize:fit:1200/format:webp/1*_No0hI6pzyMMYqDzkfE9vw.png)
+![Recursos vs Herramientas](https://media2.dev.to/dynamic/image/width%3D1600%2Cheight%3D900%2Cfit%3Dcover%2Cgravity%3Dauto%2Cformat%3Dauto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhnl6wr76jwhasm229znw.jpeg)
 
 ---
 
@@ -148,8 +150,6 @@ Los estudiantes construyen un LLM personalizado con información profesional pro
 - Aplicar el patrón Evaluador-Optimizador.  
 - Preparar el proyecto final: un *alter ego digital*.
 
-📸 **Imagen sugerida:**  
-![Flujos agénticos](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/agentic-flows.png)
 
 ---
 
