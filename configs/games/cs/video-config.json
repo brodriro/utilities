@@ -1,0 +1,95 @@
+{
+  "advanced_video": {
+    "boost_player_contrast": {
+      "options": ["disabled", "enabled"],
+      "recommended": "enabled",
+      "notes": "Mejora visibilidad sin impacto en FPS"
+    }
+  },
+  "frame_pacing": {
+    "v_sync": {
+      "options": ["disabled", "enabled"],
+      "recommended": "disabled",
+      "notes": "Wayland ya sincroniza, VSync agrega input lag"
+    },
+    "nvidia_reflex_low_latency": {
+      "options": ["disabled", "enabled", "enabled_plus_boost"],
+      "recommended": "enabled_plus_boost",
+      "notes": "Reduce input lag y cola de render, clave en Wayland"
+    },
+    "maximum_fps_in_game": {
+      "options": [0, 30, 60, 120, 144, 240],
+      "recommended": 0,
+      "notes": "Sin límite artificial de FPS"
+    },
+    "maximum_fps_in_menus": {
+      "options": [0, 30, 60, 120],
+      "recommended": 0,
+      "notes": "Opcional limitar para reducir uso de CPU en menús"
+    }
+  },
+  "video_presets": {
+    "current_video_preset": {
+      "options": ["low", "medium", "high", "very_high", "custom"],
+      "recommended": "custom",
+      "notes": "Permite control fino para competitivo"
+    },
+    "multisampling_anti_aliasing": {
+      "options": ["CMAA2", "2x_MSAA", "4x_MSAA", "8x_MSAA"],
+      "recommended": "2x_MSAA",
+      "notes": "Buen balance entre nitidez y rendimiento"
+    },
+    "global_shadow_quality": {
+      "options": ["low", "medium", "high", "very_high"],
+      "recommended": "low",
+      "notes": "Sombras son CPU-heavy en CS"
+    },
+    "dynamic_shadows": {
+      "options": ["sun_only", "all"],
+      "recommended": "sun_only",
+      "notes": "Mantiene información útil sin castigar FPS"
+    },
+    "model_texture_detail": {
+      "options": ["low", "medium", "high"],
+      "recommended": "medium",
+      "notes": "Reduce uso de VRAM manteniendo claridad visual"
+    },
+    "texture_filtering_mode": {
+      "options": [
+        "bilinear",
+        "trilinear",
+        "anisotropic_2x",
+        "anisotropic_4x",
+        "anisotropic_8x",
+        "anisotropic_16x"
+      ],
+      "recommended": "anisotropic_4x",
+      "notes": "Mejor equilibrio entre nitidez y estabilidad"
+    },
+    "shader_detail": {
+      "options": ["low", "high"],
+      "recommended": "low",
+      "notes": "Reduce micro-stutter"
+    },
+    "particle_detail": {
+      "options": ["low", "medium", "high", "very_high"],
+      "recommended": "low",
+      "notes": "Mejor rendimiento en smokes y explosiones"
+    },
+    "ambient_occlusion": {
+      "options": ["disabled", "medium", "high"],
+      "recommended": "disabled",
+      "notes": "No aporta ventaja competitiva"
+    },
+    "high_dynamic_range": {
+      "options": ["performance", "quality"],
+      "recommended": "performance",
+      "notes": "Menor latencia e impacto en FPS"
+    },
+    "fidelityfx_super_resolution": {
+      "options": ["performance", "balanced", "quality", "disabled"],
+      "recommended": "disabled",
+      "notes": "No aporta mejora en escenarios CPU/refresh limitados"
+    }
+  }
+}
